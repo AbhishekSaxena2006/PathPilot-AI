@@ -8,10 +8,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS
+# CORS Configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Temporary fix for deployment
+    allow_origins=[
+        "http://localhost:5173",
+        "https://path-pilot-kzjjn68i3-abhishek-saxena.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
