@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from graph import graph
+import traceback
 
 app = FastAPI(
     title="PathPilot AI API",
@@ -58,8 +59,11 @@ def chat(data: ChatRequest):
         }
 
     except Exception as e:
-        print("Server Error:", e)
+        print("========== SERVER ERROR ==========")
+        print("Error:", str(e))
+        traceback.print_exc()
+        print("==================================")
 
         return {
-            "reply": "❌ Something went wrong. Please try again."
+            "reply": f"❌ Server Error: {str(e)}"
         }
