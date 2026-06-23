@@ -14,13 +14,12 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://path-pilot-kzjjn68i3-abhishek-saxena.vercel.app",
+        "https://path-pilot-ai-dusky.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 class ChatRequest(BaseModel):
     message: str
