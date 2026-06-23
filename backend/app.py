@@ -8,11 +8,10 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-    ],
+    allow_origins=["*"],  # Temporary fix for deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -26,8 +25,7 @@ class ChatRequest(BaseModel):
 @app.get("/")
 def home():
     return {
-        "message":
-        "Welcome to PathPilot AI Backend 🚀"
+        "message": "Welcome to PathPilot AI Backend 🚀"
     }
 
 
@@ -60,7 +58,5 @@ def chat(data: ChatRequest):
         print("Server Error:", e)
 
         return {
-            "reply":
-            "❌ Something went wrong. "
-            "Please try again."
+            "reply": "❌ Something went wrong. Please try again."
         }
